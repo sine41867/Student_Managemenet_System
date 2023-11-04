@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.7.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 26, 2023 at 10:02 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: sql8.freesqldatabase.com
+-- Generation Time: Nov 02, 2023 at 02:37 AM
+-- Server version: 5.5.62-0ubuntu0.14.04.1
+-- PHP Version: 7.0.33-0ubuntu0.16.04.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,11 +19,9 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_student_management_system`
+-- Database: `sql8656785`
 --
 
-CREATE DATABASE db_student_management_system;
-USE db_student_management_system;
 -- --------------------------------------------------------
 
 --
@@ -34,7 +33,7 @@ CREATE TABLE `tbl_courses` (
   `name` varchar(30) NOT NULL,
   `description` varchar(150) NOT NULL,
   `academic_id` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 -- --------------------------------------------------------
@@ -47,7 +46,8 @@ CREATE TABLE `tbl_course_enrollment` (
   `course_id` varchar(7) NOT NULL,
   `student_id` varchar(10) NOT NULL,
   `grade` varchar(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 -- --------------------------------------------------------
 
@@ -57,8 +57,9 @@ CREATE TABLE `tbl_course_enrollment` (
 
 CREATE TABLE `tbl_gpa` (
   `student_id` varchar(10) NOT NULL,
-  `gpa` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `gpa` decimal(3,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 -- --------------------------------------------------------
 
@@ -68,16 +69,16 @@ CREATE TABLE `tbl_gpa` (
 
 CREATE TABLE `tbl_login` (
   `username` varchar(10) NOT NULL,
-  `password` varchar(16) NOT NULL,
+  `password` char(60) NOT NULL,
   `type` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_login`
 --
 
 INSERT INTO `tbl_login` (`username`, `password`, `type`) VALUES
-('admin', 'admin', 'administrator');
+('ADM001', '$2b$12$ouHwkUPu7gGqU9OxMKMoB.vF1Qmm4TqwJkdCc9JEdg85duWMS6lji', 'administrator');
 
 -- --------------------------------------------------------
 
@@ -91,8 +92,7 @@ CREATE TABLE `tbl_users` (
   `email` varchar(25) NOT NULL,
   `address` varchar(50) NOT NULL,
   `contact` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for table `tbl_courses`
